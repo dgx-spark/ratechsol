@@ -1,0 +1,1184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RA Tech Sol — IT Infrastructure & Technology Services</title>
+  <meta name="description" content="RA Tech Sol specializes in designing, implementing, and managing robust IT infrastructure for businesses. Managed IT services, network design, and technology consulting." />
+  <meta name="theme-color" content="#8B5CF6" />
+  <meta property="og:title" content="RA Tech Sol — IT Infrastructure & Technology Services" />
+  <meta property="og:description" content="Designing, implementing, and managing robust IT infrastructure for businesses in a digital-first world." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect width='100%25' height='100%25' fill='%238B5CF6'/%3E%3Ctext x='50%25' y='52%25' font-family='Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji' font-size='72' font-weight='700' fill='white' text-anchor='middle'%3ERA Techsol%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs/%3E%3Crect width='64' height='64' rx='14' fill='%238B5CF6'/%3E%3Cpath d='M18 44V20h13.5c5.5 0 9.5 3.7 9.5 8.7c0 3.4-1.8 6-4.7 7.5L41.8 44h-6.8l-4.8-6.7H24v6.7h-6zm6-12.3h7.1c2 0 3.5-1.6 3.5-3.9c0-2.2-1.6-3.8-3.5-3.8H24v7.7z' fill='white'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#8B5CF6;
+      --brand-2:#A855F7;
+      --brand-3:#C084FC;
+      --bg:#0a0a0f;
+      --bg-elev:#111118;
+      --text:#f8fafc;
+      --muted:#94a3b8;
+      --card:#0f0f17;
+      --stroke:#1e1e2e;
+      --ok:#10b981;
+      --warn:#f59e0b;
+      --error:#ef4444;
+      --shadow: 0 20px 40px rgba(139, 92, 246, .15), 0 8px 20px rgba(0,0,0,.4);
+      --shadow-lg: 0 25px 50px rgba(139, 92, 246, .2), 0 12px 30px rgba(0,0,0,.5);
+      --radius:16px;
+      --radius-sm:12px;
+      --radius-xs:8px;
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 85% -10%, rgba(139,92,246,.2), transparent 50%),
+        radial-gradient(1000px 520px at -5% -20%, rgba(168,85,247,.15), transparent 50%),
+        radial-gradient(800px 400px at 50% 100%, rgba(192,132,252,.1), transparent 60%),
+        linear-gradient(180deg, #0a0a0f, #0f0f17);
+      letter-spacing:.3px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(11,15,26,.6);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--stroke);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; height:72px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:40px;height:40px;border-radius:12px;
+      display:grid;place-items:center;flex:0 0 auto;
+      background:linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 8px 25px rgba(139,92,246,.4), 0 4px 12px rgba(0,0,0,.3), inset 0 0 25px rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .logo svg{width:24px;height:24px;filter: drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+    .logo img{width:24px;height:24px;object-fit:contain;filter: drop-shadow(0 2px 4px rgba(0,0,0,.3)); filter: brightness(1.1) contrast(1.2)}
+    .brand h1{font-size:18px; margin:0; font-weight:700; letter-spacing:.3px}
+    .brand small{display:block;color:var(--muted); font-size:11px; margin-top:2px}
+    nav ul{display:flex; gap:8px; list-style:none; margin:0; padding:0}
+    nav a{
+      padding:10px 12px; color:var(--muted); border-radius:10px;
+      transition: .2s ease color, .2s ease background;
+    }
+    nav a:hover{color:var(--text); background:rgba(255,255,255,.05)}
+    .cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      padding:12px 20px; border-radius:14px; border:1px solid var(--stroke); background:transparent; color:var(--text); cursor:pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-weight:500; font-size:15px;
+    }
+    .btn:hover{transform:translateY(-2px); border-color:var(--brand-3); background:rgba(139,92,246,.05)}
+    .btn.primary{
+      background:linear-gradient(135deg, var(--brand), var(--brand-2)); border-color:transparent; box-shadow: var(--shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn.primary:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .btn.ghost{background:rgba(255,255,255,.04)}
+    .hamburger{display:none}
+    /* Hero */
+    .hero{
+      padding:72px 0 32px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero .grid{
+      display:grid; grid-template-columns: 1.25fr 1fr; gap:36px; align-items:center;
+    }
+    .eyebrow{
+      display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border:1px solid var(--stroke); border-radius:999px; color:var(--muted); font-size:12px; background: rgba(255,255,255,.03)
+    }
+    .eyebrow .dot{width:8px;height:8px;border-radius:50%; background: var(--ok); box-shadow:0 0 0 6px rgba(24,201,100,.12)}
+    .hero h2{
+      font-size: clamp(40px, 5.5vw, 64px); line-height:1.1; margin:20px 0 16px; font-weight:700;
+      background: linear-gradient(135deg, var(--text), var(--brand-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p{color:var(--muted); font-size:20px; margin:0 0 28px; line-height:1.7; font-weight:400}
+    .hero .actions{
+      display:flex; flex-wrap:wrap; gap:16px; align-items:center;
+      margin-top:32px;
+    }
+    .hero .btn{
+      padding:16px 32px; font-size:16px; font-weight:600;
+      border-radius:16px; min-width:180px; text-align:center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position:relative; overflow:hidden;
+    }
+    .hero .btn.primary{
+      background:linear-gradient(135deg, var(--brand), var(--brand-2));
+      border:none; color:white; box-shadow: var(--shadow);
+    }
+    .hero .btn.primary:hover{
+      transform: translateY(-3px); box-shadow: var(--shadow-lg);
+      background:linear-gradient(135deg, var(--brand-2), var(--brand));
+    }
+    .hero .btn:not(.primary){
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2);
+      color:var(--text); backdrop-filter: blur(10px);
+    }
+    .hero .btn:not(.primary):hover{
+      background:rgba(255,255,255,.15); border-color:var(--brand-3);
+      transform: translateY(-2px);
+    }
+    .stats{display:flex; gap:18px; margin-top:18px; flex-wrap:wrap}
+    .stat{padding:16px 18px; border:1px solid rgba(139,92,246,.2); border-radius:14px; background: rgba(139,92,246,.05); backdrop-filter: blur(10px); transition: all 0.3s ease}
+    .stat b{font-size:20px; font-weight:700; color:var(--brand-3)}
+    .stage{
+      position:relative; aspect-ratio: 16/11;
+      background: radial-gradient(120% 100% at 100% 0%, rgba(139,92,246,.15), transparent 40%), 
+                  radial-gradient(80% 80% at 20% 80%, rgba(168,85,247,.1), transparent 50%),
+                  linear-gradient(180deg, #0f0f17, #0a0a0f);
+      border:1px solid rgba(139,92,246,.2); border-radius: var(--radius);
+      overflow:hidden; box-shadow: var(--shadow-lg);
+    }
+    .chip{
+      position:absolute; inset:auto auto 14% 8%;
+      display:flex; gap:8px; align-items:center; padding:10px 12px; border-radius:12px; border:1px solid var(--stroke); background:rgba(255,255,255,.04);
+      color:var(--muted); font-size:12px
+    }
+    .chip .pill{width:10px;height:10px;border-radius:50%; background:var(--brand-2); box-shadow:0 0 0 6px rgba(11,184,168,.14)}
+    .orb, .orb2{
+      position:absolute; width:300px; height:300px; border-radius:50%;
+      filter: blur(50px); opacity:.4; pointer-events:none;
+      background: radial-gradient(circle at 30% 30%, #C084FC, rgba(192,132,252,0) 70%);
+    }
+    .orb{right:-100px; top:-100px}
+    .orb2{left:-120px; bottom:-120px; background: radial-gradient(circle at 50% 50%, #A855F7, rgba(168,85,247,0) 70%)}
+    /* Trust */
+    .trust{padding:16px 0 40px}
+    .trust .row{display:flex; flex-wrap:wrap; gap:18px; align-items:center; justify-content:center}
+    .badge{
+      padding:10px 12px; border:1px dashed var(--stroke); border-radius:10px; color:var(--muted); font-size:12px; background: rgba(255,255,255,.02)
+    }
+    /* Sections */
+    section{padding:56px 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:22px}
+    .section-head h3{font-size:32px; margin:0; font-weight:700; background: linear-gradient(135deg, var(--text), var(--brand-3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
+    .section-head p{color:var(--muted); margin:0}
+    .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+    .card{
+      border:1px solid var(--stroke); border-radius:14px; background: var(--card); padding:18px; display:flex; flex-direction:column; gap:10px; transition:.25s ease transform, .25s ease border-color, .25s ease box-shadow;
+    }
+    .card:hover{transform: translateY(-4px); border-color:var(--brand-3); box-shadow: var(--shadow-lg); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);}
+    .icon{
+      width:40px;height:40px;border-radius:12px; display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(139,92,246,.2), rgba(168,85,247,.2));
+      border:1px solid rgba(139,92,246,.3);
+      transition: all 0.3s ease;
+    }
+    .icon:hover{
+      transform: scale(1.05);
+      background: linear-gradient(135deg, rgba(139,92,246,.3), rgba(168,85,247,.3));
+    }
+    .card h4{margin:8px 0 0; font-size:20px; font-weight:600; color:var(--text)}
+    .card p{margin:0; color:var(--muted); line-height:1.6}
+    .list{display:grid; gap:8px; margin:4px 0 0; padding:0; list-style:none}
+    .list li{display:flex; align-items:flex-start; gap:8px; color:var(--muted)}
+    .list svg{flex:0 0 auto; margin-top:2px}
+    /* Two column */
+    .two{display:grid; grid-template-columns: 1fr 1fr; gap:16px}
+    /* Testimonials */
+    .quotes{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+    .quote{padding:18px; border:1px solid var(--stroke); border-radius:14px; background: var(--card)}
+    .quote p{margin:10px 0 0}
+    .quote .who{display:flex; align-items:center; gap:10px; margin-top:12px; color:var(--muted)}
+    .avatar{width:32px;height:32px;border-radius:50%; background: linear-gradient(135deg, #2563eb, #22c55e)}
+    /* CTA */
+    .cta-band{padding:24px; border:1px solid rgba(139,92,246,.3); border-radius:18px; background: linear-gradient(135deg, rgba(139,92,246,.1), rgba(168,85,247,.08)); backdrop-filter: blur(10px);}
+    /* Contact */
+    .contact{display:grid; grid-template-columns: 1fr 1.1fr; gap:16px}
+    .field{display:grid; gap:8px}
+    .field label{font-size:13px; color:var(--muted)}
+    .field input, .field select, .field textarea{
+      width:100%; padding:12px 12px; border-radius:12px; border:1px solid var(--stroke); background: rgba(255,255,255,.03); color:var(--text)
+    }
+    .field input:focus, .field select:focus, .field textarea:focus{outline:2px solid rgba(139,92,246,.4); border-color:var(--brand);}
+    .grid-2{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .helper{font-size:12px; color:var(--muted)}
+    .toast{
+      display:none; margin-top:10px; padding:10px 12px; border-radius:10px; border:1px solid var(--stroke); background: rgba(24,201,100,.1); color:#adf0c8
+    }
+    /* Footer */
+    footer{border-top:1px solid var(--stroke); padding:24px 0; color:var(--muted)}
+    footer .row{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .social{display:flex; gap:10px}
+    .social a{padding:8px; border:1px solid var(--stroke); border-radius:10px; color:var(--muted)}
+    .small{font-size:12px}
+    
+    /* Scroll Buttons */
+    .scroll-btn{
+      position:fixed; z-index:100; width:50px; height:50px; border-radius:50%;
+      background:linear-gradient(135deg, var(--brand), var(--brand-2)); border:none; color:white;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      box-shadow: var(--shadow); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity:0; visibility:hidden; transform: scale(0.8);
+    }
+    .scroll-btn.visible{opacity:1; visibility:visible; transform: scale(1)}
+    .scroll-btn:hover{transform: scale(1.1); box-shadow: var(--shadow-lg);}
+    .scroll-to-top{right:20px; bottom:20px;}
+    .scroll-to-bottom{right:20px; bottom:80px;}
+    .scroll-btn svg{width:20px; height:20px}
+    
+    /* Animations & UX Improvements */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .card, .hero, section {
+      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hero h2 {
+      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+    }
+    
+    .hero p {
+      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+    }
+    
+    .hero .actions {
+      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+    }
+    
+    .stats {
+      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.8s both;
+    }
+    
+    /* WhatsApp Button */
+    .whatsapp-btn{
+      position:fixed; z-index:100; width:60px; height:60px; border-radius:50%;
+      background:#25D366; border:none; color:white; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, .4); 
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      left:20px; bottom:20px; animation: pulse 2s infinite;
+    }
+    .whatsapp-btn:hover{
+      transform: scale(1.1); box-shadow: 0 6px 25px rgba(37, 211, 102, .6);
+    }
+    .whatsapp-btn svg{width:32px; height:32px}
+    
+    /* Enhanced Hover Effects */
+    .card:hover .icon {
+      animation: pulse 0.6s ease-in-out;
+    }
+    
+    .btn:hover {
+      animation: pulse 0.3s ease-in-out;
+    }
+    
+    /* Loading States */
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    
+    /* Enhanced Focus States */
+    .btn:focus, .card:focus, .scroll-btn:focus, .whatsapp-btn:focus {
+      outline: 2px solid var(--brand-3);
+      outline-offset: 2px;
+    }
+    
+    /* Enhanced Responsive Design */
+    @media (max-width: 1200px){
+      .container{padding:0 24px}
+      .hero h2{font-size: clamp(36px, 4.5vw, 56px)}
+    }
+    
+    @media (max-width: 980px){
+      .hero .grid, .two, .contact{grid-template-columns: 1fr; gap:24px}
+      .cards{grid-template-columns: repeat(2, 1fr); gap:20px}
+      .quotes{grid-template-columns: 1fr 1fr; gap:20px}
+      .nav ul{display:none}
+      .hamburger{display:inline-flex}
+      .hero{padding:60px 0 24px}
+      .hero .actions{flex-direction:column; align-items:stretch; gap:12px}
+      .hero .btn{min-width:auto; width:100%; max-width:300px; margin:0 auto}
+      .stats{justify-content:center; gap:16px}
+      .section-head{flex-direction:column; align-items:flex-start; gap:12px}
+      .scroll-to-top{right:15px; bottom:15px}
+      .scroll-to-bottom{right:15px; bottom:75px}
+      .whatsapp-btn{left:15px; bottom:15px; width:56px; height:56px}
+    }
+    
+    @media (max-width: 768px){
+      .container{padding:0 20px}
+      .hero{padding:48px 0 20px}
+      .hero h2{font-size: clamp(32px, 8vw, 48px); line-height:1.2}
+      .hero p{font-size:18px; line-height:1.6}
+      .cards{grid-template-columns: 1fr; gap:16px}
+      .quotes{grid-template-columns: 1fr; gap:16px}
+      .section-head h3{font-size:28px}
+      .stats{flex-direction:column; align-items:center; gap:12px}
+      .stat{width:100%; max-width:200px; text-align:center}
+      .nav{height:64px; gap:12px}
+      .logo{width:36px; height:36px}
+      .logo img{width:22px; height:22px}
+      .brand h1{font-size:16px}
+      .brand small{font-size:10px}
+      .btn{padding:14px 24px; font-size:14px}
+      .card{padding:16px}
+      .section-head{text-align:center}
+      .cta-band{padding:20px; text-align:center}
+      .footer .row{flex-direction:column; gap:16px; text-align:center}
+      .social{justify-content:center}
+    }
+    
+    @media (max-width: 480px){
+      .container{padding:0 16px}
+      .hero{padding:40px 0 16px}
+      .hero h2{font-size: clamp(28px, 10vw, 40px)}
+      .hero p{font-size:16px}
+      .hero .btn{padding:12px 20px; font-size:14px}
+      .nav{height:60px}
+      .logo{width:32px; height:32px}
+      .logo img{width:20px; height:20px}
+      .brand h1{font-size:14px}
+      .brand small{font-size:9px}
+      .section-head h3{font-size:24px}
+      .card{padding:14px}
+      .btn{padding:12px 20px; font-size:13px}
+      .scroll-to-top, .scroll-to-bottom{width:44px; height:44px; right:12px}
+      .scroll-to-top{bottom:12px}
+      .scroll-to-bottom{bottom:64px}
+      .whatsapp-btn{width:52px; height:52px; left:12px; bottom:12px}
+      .whatsapp-btn svg{width:28px; height:28px}
+    }
+    
+    /* Large Desktop Optimizations */
+    @media (min-width: 1400px){
+      .container{max-width:1400px}
+      .hero h2{font-size:72px}
+      .hero p{font-size:24px}
+      .cards{grid-template-columns: repeat(4, 1fr)}
+      .section-head h3{font-size:40px}
+    }
+    
+    /* Ultra-wide Desktop */
+    @media (min-width: 1920px){
+      .container{max-width:1600px}
+      .hero{padding:120px 0 60px}
+      .section{padding:80px 0}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"RA Techsol",
+    "url":"https://example.com",
+    "logo":"https://example.com/logo.svg",
+    "sameAs": ["https://www.linkedin.com/","https://twitter.com/"],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+1-555-0123",
+      "contactType": "sales",
+      "email": "contact@ratechsol.com",
+      "areaServed": "Worldwide",
+      "availableLanguage": ["English"]
+    }]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#home" aria-label="RA Tech Sol Home">
+        <span class="logo" aria-hidden="true">
+          <img src="logo.svg" alt="RA Tech Sol Logo" width="24" height="24" />
+        </span>
+        <span>
+          <h1>RA Tech Sol</h1>
+          <small>IT Infrastructure & Technology Services</small>
+        </span>
+      </a>
+      <nav>
+        <ul id="menu">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cta">
+        <a class="btn ghost" href="#contact">Get a quote</a>
+        <button class="btn primary hamburger" id="hamburger" aria-expanded="false" aria-controls="menu" aria-label="Toggle navigation">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="container grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Reliable technology partner</span>
+        <h2>Designing, implementing, and managing robust IT infrastructure for businesses.</h2>
+        <p>We specialize in providing reliable, efficient, and scalable technology services that help businesses thrive in a digital-first world.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Start your project</a>
+          <a class="btn" href="#work">See our work</a>
+        </div>
+        <div class="stats" aria-label="Key results">
+          <div class="stat"><b>100+</b> businesses served</div>
+          <div class="stat"><b>99.9%</b> system uptime</div>
+          <div class="stat"><b>24/7</b> IT support</div>
+        </div>
+      </div>
+      <div>
+        <div class="stage" aria-hidden="true">
+          <!-- stylized tech diagram -->
+          <svg viewBox="0 0 800 550" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#1457D2" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#0bb8a8" stop-opacity=".9"/>
+              </linearGradient>
+              <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2" />
+              </filter>
+            </defs>
+            <!-- Grid -->
+            <g stroke="#1c2742" stroke-width="1">
+              <path d="M60 60 H740 M60 140 H740 M60 220 H740 M60 300 H740 M60 380 H740 M60 460 H740" opacity=".8"/>
+              <path d="M60 60 V460 M220 60 V460 M380 60 V460 M540 60 V460 M700 60 V460" opacity=".8"/>
+            </g>
+            <!-- Nodes -->
+            <g fill="none" stroke="url(#g1)" stroke-width="2">
+              <rect x="90" y="90" rx="14" width="140" height="70" fill="rgba(20,87,210,.12)" stroke="#2a3a66"/>
+              <rect x="310" y="90" rx="14" width="180" height="70" fill="rgba(20,87,210,.12)" stroke="#2a3a66"/>
+              <rect x="560" y="90" rx="14" width="140" height="70" fill="rgba(20,87,210,.12)" stroke="#2a3a66"/>
+              <rect x="180" y="250" rx="14" width="180" height="80" fill="rgba(11,184,168,.12)" stroke="#2a3a66"/>
+              <rect x="440" y="250" rx="14" width="180" height="80" fill="rgba(11,184,168,.12)" stroke="#2a3a66"/>
+              <rect x="310" y="400" rx="14" width="180" height="80" fill="rgba(255,255,255,.05)" stroke="#2a3a66"/>
+              <!-- connectors -->
+              <path d="M230 125 H310" />
+              <path d="M490 125 H560" />
+              <path d="M240 160 V250" />
+              <path d="M560 160 V250" />
+              <path d="M270 290 H440" />
+              <path d="M380 330 V400" />
+              <path d="M540 330 V400" />
+            </g>
+            <!-- glows -->
+            <circle cx="310" cy="400" r="60" fill="#1457D2" opacity=".35" filter="url(#blur)"/>
+            <circle cx="560" cy="280" r="60" fill="#0bb8a8" opacity=".35" filter="url(#blur)"/>
+          </svg>
+          <div class="chip"><span class="pill"></span> Secure by design</div>
+          <div class="orb"></div>
+          <div class="orb2"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="trust">
+    <div class="container">
+      <div class="row" aria-label="Trusted by">
+        <span class="badge">Trusted by businesses worldwide</span>
+        <span class="badge">Certified IT professionals</span>
+        <span class="badge">24/7 support available</span>
+        <span class="badge">Proven track record</span>
+        <span class="badge">Reliable technology partner</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>Our Services</h3>
+          <p>Comprehensive IT infrastructure and technology services for businesses.</p>
+        </div>
+        <a class="btn" href="#contact">Discuss your needs</a>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 5h16v6H4zM4 13h16v6H4z" stroke="#8fb0ff" stroke-width="2"/></svg>
+          </span>
+          <h4>Managed IT Services & Support</h4>
+          <p>Comprehensive IT support and management services to keep your business running smoothly.</p>
+          <ul class="list">
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> 24/7 IT support and monitoring</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Help desk and technical assistance</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> System maintenance and updates</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 19h14l-7-14-7 14z" stroke="#8fb0ff" stroke-width="2"/></svg>
+          </span>
+          <h4>Network Design & Administration</h4>
+          <p>Professional network design, implementation, and ongoing administration services.</p>
+          <ul class="list">
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Network architecture and design</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Network installation and configuration</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Network monitoring and maintenance</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 12h16M12 4v16" stroke="#8fb0ff" stroke-width="2"/></svg>
+          </span>
+          <h4>IT Infrastructure Management</h4>
+          <p>Complete management of your IT infrastructure to ensure optimal performance and reliability.</p>
+          <ul class="list">
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Server management and maintenance</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Infrastructure monitoring and optimization</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Backup and disaster recovery</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 7h10v10H7z" stroke="#8fb0ff" stroke-width="2"/></svg>
+          </span>
+          <h4>Technology Consulting</h4>
+          <p>Strategic technology consulting to help you make informed IT decisions and plan for growth.</p>
+          <ul class="list">
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> IT strategy and planning</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Technology assessment and recommendations</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Digital transformation guidance</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="#8fb0ff" stroke-width="2"/></svg>
+          </span>
+          <h4>Systems Integration</h4>
+          <p>Seamless integration of various systems and technologies to create unified IT solutions.</p>
+          <ul class="list">
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> System integration and migration</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Legacy system modernization</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Third-party software integration</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 6h14M5 12h14M5 18h14" stroke="#8fb0ff" stroke-width="2"/></svg>
+          </span>
+          <h4>IT Support & Maintenance</h4>
+          <p>Ongoing IT support and maintenance services to ensure your systems run smoothly.</p>
+          <ul class="list">
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Proactive system maintenance</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Software updates and patches</li>
+            <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#18c964"/></svg> Performance tuning and optimization</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="solutions">
+    <div class="container two">
+      <div class="card">
+        <h4>IT Service Packages</h4>
+        <p>Comprehensive IT service packages tailored to your business needs.</p>
+        <ul class="list">
+          <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#0bb8a8"/></svg> Basic IT support packages</li>
+          <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#0bb8a8"/></svg> Advanced infrastructure management</li>
+          <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#0bb8a8"/></svg> Custom technology solutions</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Service Models</h4>
+        <p>Flexible service models to meet your business requirements and budget.</p>
+        <ul class="list">
+          <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#0bb8a8"/></svg> On-demand IT support</li>
+          <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#0bb8a8"/></svg> Managed IT services</li>
+          <li><svg width="16" height="16"><circle cx="8" cy="8" r="3" fill="#0bb8a8"/></svg> Project-based consulting</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="industries">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>Industries We Serve</h3>
+          <p>IT infrastructure solutions for businesses across various industries.</p>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="card"><h4>Small & Medium Businesses</h4><p>Complete IT infrastructure solutions for growing businesses.</p></div>
+        <div class="card"><h4>Healthcare</h4><p>Reliable IT infrastructure for healthcare providers and medical practices.</p></div>
+        <div class="card"><h4>Retail & E-commerce</h4><p>IT solutions for retail businesses and online stores.</p></div>
+        <div class="card"><h4>Professional Services</h4><p>Technology infrastructure for law firms, accounting, and consulting businesses.</p></div>
+        <div class="card"><h4>Manufacturing</h4><p>IT infrastructure solutions for manufacturing and industrial businesses.</p></div>
+        <div class="card"><h4>Education</h4><p>Technology services for schools, colleges, and educational institutions.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>Success Stories</h3>
+          <p>Real results from our IT infrastructure and technology projects.</p>
+        </div>
+        <a class="btn" href="#contact">Request case studies</a>
+      </div>
+      <div class="two">
+        <div class="card">
+          <h4>Complete IT Infrastructure Overhaul</h4>
+          <p>Designed and implemented a comprehensive IT infrastructure for a growing manufacturing company.</p>
+          <ul class="list">
+            <li><svg width="16" height="16"><rect x="3" y="3" width="10" height="10" fill="#18c964"/></svg> 50% improvement in system reliability</li>
+            <li><svg width="16" height="16"><rect x="3" y="3" width="10" height="10" fill="#18c964"/></svg> 99.9% network uptime achieved</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Network Design & Implementation</h4>
+          <p>Designed and implemented a robust network infrastructure for a multi-location retail business.</p>
+          <ul class="list">
+            <li><svg width="16" height="16"><rect x="3" y="3" width="10" height="10" fill="#18c964"/></svg> Seamless connectivity across 5 locations</li>
+            <li><svg width="16" height="16"><rect x="3" y="3" width="10" height="10" fill="#18c964"/></svg> 40% improvement in network performance</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quotes" style="margin-top:16px">
+        <div class="quote">
+          <div class="who"><span class="avatar" aria-hidden="true"></span> IT Manager, Manufacturing</div>
+          <p>RA Tech Sol transformed our IT infrastructure—reliable, efficient, and perfectly suited to our needs.</p>
+        </div>
+        <div class="quote">
+          <div class="who"><span class="avatar" aria-hidden="true"></span> Operations Director, Retail</div>
+          <p>They designed and implemented a robust network infrastructure that keeps all our locations connected seamlessly.</p>
+        </div>
+        <div class="quote">
+          <div class="who"><span class="avatar" aria-hidden="true"></span> Practice Manager, Healthcare</div>
+          <p>Professional IT support that allows us to focus on patient care while our technology runs smoothly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="cta-band">
+        <div class="two" style="align-items:center">
+          <div>
+            <h3 style="margin:0 0 6px">Why RA Tech Sol</h3>
+            <p style="margin:0;color:var(--muted)">Dedicated technology partner. Proven expertise. Reliable solutions. We help businesses thrive in a digital-first world.</p>
+          </div>
+          <div style="text-align:right">
+            <a class="btn primary" href="#contact">Book a free consult</a>
+          </div>
+        </div>
+      </div>
+      <div class="two" style="margin-top:16px">
+        <div class="card">
+          <h4>Our Approach</h4>
+          <ul class="list">
+            <li><svg width="16" height="16"><path d="M2 8l4 4 8-8" stroke="#18c964" stroke-width="2" fill="none"/></svg> Business-focused solutions</li>
+            <li><svg width="16" height="16"><path d="M2 8l4 4 8-8" stroke="#18c964" stroke-width="2" fill="none"/></svg> Reliable infrastructure design</li>
+            <li><svg width="16" height="16"><path d="M2 8l4 4 8-8" stroke="#18c964" stroke-width="2" fill="none"/></svg> Scalable technology solutions</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Technologies We Work With</h4>
+          <p class="small">Windows Server, Linux, VMware, Hyper-V, Cisco, HP, Dell, Microsoft 365, Active Directory, Exchange, SQL Server, Backup Solutions, Network Monitoring Tools.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h3>Let’s build something great</h3>
+          <p>Tell us about your goals. We’ll follow up within one business day.</p>
+        </div>
+      </div>
+      <div class="contact">
+        <div class="card">
+          <form id="contact-form" novalidate>
+            <div class="grid-2">
+              <div class="field">
+                <label for="name">Full name</label>
+                <input id="name" name="name" placeholder="Jane Doe" required />
+              </div>
+              <div class="field">
+                <label for="email">Work email</label>
+                <input id="email" name="email" type="email" placeholder="jane@company.com" required />
+              </div>
+            </div>
+            <div class="field" style="margin-top:12px">
+              <label for="company">Company</label>
+              <input id="company" name="company" placeholder="Acme Inc." />
+            </div>
+            <div class="field" style="margin-top:12px">
+              <label for="message">Project brief</label>
+              <textarea id="message" name="message" rows="5" placeholder="What are you building and what does success look like?" required></textarea>
+            </div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:12px">
+              <span class="helper">By submitting, you agree to our terms and privacy policy.</span>
+              <button class="btn primary" type="submit">Send message</button>
+            </div>
+            <div id="toast" class="toast" role="status" aria-live="polite">Thanks! We’ve prepared your email—please confirm in your mail app.</div>
+          </form>
+        </div>
+        <div class="card">
+          <h4>Contact</h4>
+          <p class="small">Prefer email? Reach us directly.</p>
+          <ul class="list">
+            <li><svg width="16" height="16"><path d="M2 4h20L12 13 2 4z" stroke="#8fb0ff" fill="none"/></svg> contact@ratechsol.com</li>
+            <li><svg width="16" height="16"><path d="M3 5h4l2 4h10v8H3z" stroke="#8fb0ff" fill="none"/></svg> +92 (313) 6265 742</li>
+            <li><svg width="16" height="16"><rect x="3" y="3" width="10" height="10" stroke="#8fb0ff" fill="none"/></svg> Lahore, Pakistan</li>
+          </ul>
+          <div class="cta" style="margin-top:16px">
+            <a class="btn" href="mailto:contact@ratechsol.com">Email us</a>
+            <a class="btn ghost" href="#">Download capabilities deck</a>
+          </div>
+          <div style="margin-top:16px">
+            <h4 style="margin:0 0 6px">Our Process</h4>
+            <ol class="small" style="margin:0; padding-left:18px">
+              <li>Initial consultation & needs assessment</li>
+              <li>IT infrastructure evaluation & proposal</li>
+              <li>Project planning & implementation</li>
+              <li>Ongoing support & maintenance</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container row">
+        <div class="brand" aria-label="RA Tech Sol">
+        <span class="logo" aria-hidden="true">
+          <img src="logo.svg" alt="RA Tech Sol Logo" width="24" height="24" />
+        </span>
+        <span>
+          <strong>RA Tech Sol</strong>
+          <small>© <span id="year"></span> All rights reserved</small>
+        </span>
+      </div>
+      <div class="social" aria-label="Social links">
+        <a href="https://www.linkedin.com/company/ra-techsol" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+        <a href="#" aria-label="Twitter / X">X</a>
+        <a href="#" aria-label="GitHub">GH</a>
+      </div>
+      <div class="small">
+        <a href="terms.html" style="color:var(--muted)">Terms</a> · 
+        <a href="privacy.html" style="color:var(--muted)">Privacy</a> · 
+        <a href="security.html" style="color:var(--muted)">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Buttons -->
+  <button class="scroll-btn scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+  
+  <button class="scroll-btn scroll-to-bottom" id="scrollToBottom" aria-label="Scroll to bottom">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 9l6 6 6-6"/>
+    </svg>
+  </button>
+  
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/923136265742" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+    </svg>
+  </a>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Enhanced mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', String(!open));
+        
+        if (!open) {
+          menu.style.display = 'flex';
+          menu.style.flexDirection = 'column';
+          menu.style.position = 'absolute';
+          menu.style.top = '100%';
+          menu.style.left = '0';
+          menu.style.right = '0';
+          menu.style.background = 'rgba(10,10,15,.95)';
+          menu.style.backdropFilter = 'blur(10px)';
+          menu.style.border = '1px solid var(--stroke)';
+          menu.style.borderRadius = '0 0 16px 16px';
+          menu.style.padding = '20px';
+          menu.style.gap = '8px';
+          menu.style.zIndex = '1000';
+          menu.style.animation = 'fadeInUp 0.3s ease-out';
+        } else {
+          menu.style.display = 'none';
+        }
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+          hamburger.setAttribute('aria-expanded', 'false');
+          menu.style.display = 'none';
+        }
+      });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          const el = document.querySelector(id);
+          if (el){
+            e.preventDefault();
+            el.scrollIntoView({behavior:'smooth', block:'start'});
+          }
+        }
+      });
+    });
+
+    // Contact form -> opens mailto with prefilled body
+    const form = document.getElementById('contact-form');
+    const toast = document.getElementById('toast');
+    form?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      // Basic validation
+      if (!data.name || !data.email || !data.message) {
+        toast.textContent = 'Please fill out name, email, and message.';
+        toast.style.background = 'rgba(255,90,107,.1)';
+        toast.style.color = '#ffb3bd';
+        toast.style.display = 'block';
+        return;
+      }
+      const to = 'contact@ratechsol.com'; // TODO: update to your real inbox
+      const subject = encodeURIComponent(`New project inquiry from ${data.name} (${data.company || 'No company'})`);
+      const body = encodeURIComponent(
+        `Name: ${data.name}
+Email: ${data.email}
+Company: ${data.company || '—'}
+
+Project brief:
+${data.message}
+
+-- 
+Sent from ratechsol.com landing page`
+      );
+      const href = `mailto:${to}?subject=${subject}&body=${body}`;
+      // Show toast and open mail client
+      toast.textContent = 'Thanks! We’ve prepared your email—please confirm in your mail app.';
+      toast.style.background = 'rgba(24,201,100,.1)';
+      toast.style.color = '#adf0c8';
+      toast.style.display = 'block';
+      setTimeout(()=>{ window.location.href = href; }, 150);
+      form.reset();
+    });
+
+    // Scroll buttons functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    const scrollToBottomBtn = document.getElementById('scrollToBottom');
+    
+    // Show/hide scroll buttons based on scroll position
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // Show scroll to top button when scrolled down
+      if (scrollTop > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+      
+      // Show scroll to bottom button when not at bottom
+      if (scrollTop < documentHeight - windowHeight - 100) {
+        scrollToBottomBtn.classList.add('visible');
+      } else {
+        scrollToBottomBtn.classList.remove('visible');
+      }
+    });
+    
+    // Scroll to top functionality
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Scroll to bottom functionality
+    scrollToBottomBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      });
+    });
+
+    // Enhanced scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements for scroll animations
+    document.querySelectorAll('.card, .section-head, .stats').forEach(el => {
+      el.classList.add('animate-on-scroll');
+      observer.observe(el);
+    });
+
+    // Enhanced button interactions
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        // Add ripple effect
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+          position: absolute;
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          background: rgba(255,255,255,0.3);
+          border-radius: 50%;
+          transform: scale(0);
+          animation: ripple 0.6s linear;
+          pointer-events: none;
+        `;
+        
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // Add ripple animation keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Enhanced form interactions
+    const formInputs = document.querySelectorAll('input, textarea, select');
+    formInputs.forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.classList.add('focused');
+      });
+      
+      input.addEventListener('blur', function() {
+        if (!this.value) {
+          this.parentElement.classList.remove('focused');
+        }
+      });
+    });
+
+    // Smooth reveal animations for sections
+    const sections = document.querySelectorAll('section');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    // Enhanced card hover effects
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+        this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Loading state for form submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function() {
+        this.classList.add('loading');
+        setTimeout(() => {
+          this.classList.remove('loading');
+        }, 2000);
+      });
+    }
+
+    // Touch-friendly interactions
+    let touchStartY = 0;
+    let touchEndY = 0;
+    
+    document.addEventListener('touchstart', e => {
+      touchStartY = e.changedTouches[0].screenY;
+    });
+    
+    document.addEventListener('touchend', e => {
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipe();
+    });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartY - touchEndY;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swipe up - scroll down
+          window.scrollBy(0, 100);
+        } else {
+          // Swipe down - scroll up
+          window.scrollBy(0, -100);
+        }
+      }
+    }
+
+    // Enhanced scroll performance
+    let ticking = false;
+    function updateScrollElements() {
+      const scrollTop = window.pageYOffset;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // Update scroll buttons
+      if (scrollTop > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+      
+      if (scrollTop < documentHeight - windowHeight - 100) {
+        scrollToBottomBtn.classList.add('visible');
+      } else {
+        scrollToBottomBtn.classList.remove('visible');
+      }
+      
+      ticking = false;
+    }
+    
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollElements);
+        ticking = true;
+      }
+    }
+    
+    window.addEventListener('scroll', requestTick);
+
+    // Mobile-optimized card interactions
+    if (window.innerWidth <= 768) {
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('touchstart', function() {
+          this.style.transform = 'scale(0.98)';
+        });
+        
+        card.addEventListener('touchend', function() {
+          this.style.transform = 'scale(1)';
+        });
+      });
+    }
+
+    // Prevent zoom on double tap for iOS
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+
+    // Optimize images for mobile
+    if (window.innerWidth <= 768) {
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        img.style.maxWidth = '100%';
+        img.style.height = 'auto';
+      });
+    }
+  </script>
+</body>
+</html>

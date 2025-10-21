@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Service — RA Tech Sol</title>
+  <meta name="description" content="Terms of Service for RA Tech Sol IT infrastructure and technology services." />
+  <meta name="theme-color" content="#8B5CF6" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs/%3E%3Crect width='64' height='64' rx='14' fill='%238B5CF6'/%3E%3Cpath d='M18 44V20h13.5c5.5 0 9.5 3.7 9.5 8.7c0 3.4-1.8 6-4.7 7.5L41.8 44h-6.8l-4.8-6.7H24v6.7h-6zm6-12.3h7.1c2 0 3.5-1.6 3.5-3.9c0-2.2-1.6-3.8-3.5-3.8H24v7.7z' fill='white'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#8B5CF6;
+      --brand-2:#A855F7;
+      --brand-3:#C084FC;
+      --bg:#0a0a0f;
+      --bg-elev:#111118;
+      --text:#f8fafc;
+      --muted:#94a3b8;
+      --card:#0f0f17;
+      --stroke:#1e1e2e;
+      --ok:#10b981;
+      --warn:#f59e0b;
+      --error:#ef4444;
+      --shadow: 0 20px 40px rgba(139, 92, 246, .15), 0 8px 20px rgba(0,0,0,.4);
+      --shadow-lg: 0 25px 50px rgba(139, 92, 246, .2), 0 12px 30px rgba(0,0,0,.5);
+      --radius:16px;
+      --radius-sm:12px;
+      --radius-xs:8px;
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 85% -10%, rgba(139,92,246,.2), transparent 50%),
+        radial-gradient(1000px 520px at -5% -20%, rgba(168,85,247,.15), transparent 50%),
+        radial-gradient(800px 400px at 50% 100%, rgba(192,132,252,.1), transparent 60%),
+        linear-gradient(180deg, #0a0a0f, #0f0f17);
+      letter-spacing:.3px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(10,10,15,.8);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--stroke);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; height:72px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:40px;height:40px;border-radius:12px;
+      display:grid;place-items:center;flex:0 0 auto;
+      background:linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 8px 25px rgba(139,92,246,.4), 0 4px 12px rgba(0,0,0,.3), inset 0 0 25px rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .logo img{width:24px;height:24px;object-fit:contain;filter: drop-shadow(0 2px 4px rgba(0,0,0,.3)); filter: brightness(1.1) contrast(1.2)}
+    .brand h1{font-size:18px; margin:0; font-weight:700; letter-spacing:.3px}
+    .brand small{display:block;color:var(--muted); font-size:11px; margin-top:2px}
+    nav ul{display:flex; gap:8px; list-style:none; margin:0; padding:0}
+    nav a{
+      padding:10px 12px; color:var(--muted); border-radius:10px;
+      transition: .2s ease color, .2s ease background;
+    }
+    nav a:hover{color:var(--text); background:rgba(255,255,255,.05)}
+    .btn{
+      padding:12px 20px; border-radius:14px; border:1px solid var(--stroke); background:transparent; color:var(--text); cursor:pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-weight:500; font-size:15px;
+    }
+    .btn:hover{transform:translateY(-2px); border-color:var(--brand-3); background:rgba(139,92,246,.05)}
+    .btn.primary{
+      background:linear-gradient(135deg, var(--brand), var(--brand-2)); border-color:transparent; box-shadow: var(--shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn.primary:hover{transform: translateY(-2px); box-shadow: var(--shadow-lg);}
+    .hamburger{display:none}
+    
+    /* Content */
+    .content{padding:72px 0 32px; max-width:800px; margin:0 auto}
+    .content h1{font-size: clamp(32px, 5vw, 48px); margin:0 0 16px; font-weight:700; background: linear-gradient(135deg, var(--text), var(--brand-3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;}
+    .content h2{font-size:24px; margin:32px 0 16px; font-weight:600; color:var(--text)}
+    .content h3{font-size:20px; margin:24px 0 12px; font-weight:600; color:var(--text)}
+    .content p{margin:0 0 16px; color:var(--muted); line-height:1.7}
+    .content ul, .content ol{margin:0 0 16px; padding-left:24px; color:var(--muted)}
+    .content li{margin:0 0 8px; line-height:1.6}
+    .content strong{color:var(--text); font-weight:600}
+    .content .highlight{background:rgba(139,92,246,.1); padding:16px; border-radius:12px; border-left:4px solid var(--brand); margin:20px 0}
+    .content .last-updated{color:var(--muted); font-size:14px; margin-bottom:32px; font-style:italic}
+    
+    /* Footer */
+    footer{border-top:1px solid var(--stroke); padding:24px 0; color:var(--muted)}
+    footer .row{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .social{display:flex; gap:10px}
+    .social a{padding:8px; border:1px solid var(--stroke); border-radius:10px; color:var(--muted)}
+    .small{font-size:12px}
+    
+    /* Responsive */
+    @media (max-width: 768px){
+      .content{padding:48px 0 24px}
+      .content h1{font-size:28px}
+      .content h2{font-size:20px}
+      .content h3{font-size:18px}
+      .nav ul{display:none}
+      .hamburger{display:inline-flex}
+      .footer .row{flex-direction:column; gap:16px; text-align:center}
+      .social{justify-content:center}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="RA Tech Sol Home">
+        <span class="logo" aria-hidden="true">
+          <img src="logo.svg" alt="RA Tech Sol Logo" width="24" height="24" />
+        </span>
+        <span>
+          <h1>RA Tech Sol</h1>
+          <small>IT Infrastructure & Technology Services</small>
+        </span>
+      </a>
+      <nav>
+        <ul id="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="industries.html">Industries</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cta">
+        <a class="btn" href="contact.html">Get a quote</a>
+        <button class="btn primary hamburger" id="hamburger" aria-expanded="false" aria-controls="menu" aria-label="Toggle navigation">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <h1>Terms of Service</h1>
+    <p class="last-updated">Last updated: January 2025</p>
+    
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing and using RA Tech Sol's IT infrastructure and technology services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+
+    <h2>2. Service Description</h2>
+    <p>RA Tech Sol provides comprehensive IT infrastructure services including:</p>
+    <ul>
+      <li>Managed IT Services & Support</li>
+      <li>Network Design, Security & Administration</li>
+      <li>IT Infrastructure Management</li>
+      <li>Technology Consulting</li>
+      <li>Systems Integration</li>
+    </ul>
+
+    <h2>3. Service Level Agreement</h2>
+    <div class="highlight">
+      <p><strong>Uptime Commitment:</strong> We guarantee 99.9% system uptime for managed services. In the event of downtime exceeding our SLA, service credits will be provided as outlined in your specific service agreement.</p>
+    </div>
+
+    <h2>4. Client Responsibilities</h2>
+    <p>As a client of RA Tech Sol, you agree to:</p>
+    <ul>
+      <li>Provide accurate and complete information about your IT infrastructure needs</li>
+      <li>Grant necessary access to systems and networks for service delivery</li>
+      <li>Maintain appropriate backups of critical data</li>
+      <li>Comply with all applicable laws and regulations</li>
+      <li>Notify us promptly of any changes that may affect service delivery</li>
+    </ul>
+
+    <h2>5. Payment Terms</h2>
+    <p>Payment terms are as follows:</p>
+    <ul>
+      <li>Invoices are due within 30 days of receipt</li>
+      <li>Late payments may incur a 1.5% monthly service charge</li>
+      <li>Services may be suspended for accounts 60 days past due</li>
+      <li>All prices are subject to change with 30 days written notice</li>
+    </ul>
+
+    <h2>6. Data Protection and Privacy</h2>
+    <p>RA Tech Sol is committed to protecting your data and privacy. We implement industry-standard security measures and comply with applicable data protection regulations. Detailed information about our data handling practices is available in our <a href="privacy.html" style="color:var(--brand-3)">Privacy Policy</a>.</p>
+
+    <h2>7. Limitation of Liability</h2>
+    <p>RA Tech Sol's liability for any claim arising from our services is limited to the total amount paid by the client for the specific service in question during the 12 months preceding the claim. We are not liable for indirect, incidental, or consequential damages.</p>
+
+    <h2>8. Service Modifications</h2>
+    <p>We reserve the right to modify or discontinue services with 30 days written notice. We will work with clients to minimize disruption during any service changes.</p>
+
+    <h2>9. Termination</h2>
+    <p>Either party may terminate services with 30 days written notice. Upon termination, we will provide a transition plan and return any client data in our possession.</p>
+
+    <h2>10. Governing Law</h2>
+    <p>These terms are governed by the laws of Pakistan. Any disputes will be resolved through binding arbitration in Lahore, Pakistan.</p>
+
+    <h2>11. Contact Information</h2>
+    <p>For questions about these Terms of Service, please contact us:</p>
+    <ul>
+      <li>Email: contact@ratechsol.com</li>
+      <li>Phone: +92 (313) 6265 742</li>
+      <li>Address: Lahore, Pakistan</li>
+    </ul>
+  </main>
+
+  <footer>
+    <div class="container row">
+      <div class="brand" aria-label="RA Tech Sol">
+        <span class="logo" aria-hidden="true">
+          <img src="logo.svg" alt="RA Tech Sol Logo" width="24" height="24" />
+        </span>
+        <span>
+          <strong>RA Tech Sol</strong>
+          <small>© <span id="year"></span> All rights reserved</small>
+        </span>
+      </div>
+      <div class="social" aria-label="Social links">
+        <a href="https://www.linkedin.com/company/ra-techsol" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+        <a href="#" aria-label="Twitter / X">X</a>
+        <a href="#" aria-label="GitHub">GH</a>
+      </div>
+      <div class="small">
+        <a href="terms.html" style="color:var(--brand-3)">Terms</a> · 
+        <a href="privacy.html" style="color:var(--muted)">Privacy</a> · 
+        <a href="security.html" style="color:var(--muted)">Security</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const open = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', String(!open));
+        
+        if (!open) {
+          menu.style.display = 'flex';
+          menu.style.flexDirection = 'column';
+          menu.style.position = 'absolute';
+          menu.style.top = '100%';
+          menu.style.left = '0';
+          menu.style.right = '0';
+          menu.style.background = 'rgba(10,10,15,.95)';
+          menu.style.backdropFilter = 'blur(10px)';
+          menu.style.border = '1px solid var(--stroke)';
+          menu.style.borderRadius = '0 0 16px 16px';
+          menu.style.padding = '20px';
+          menu.style.gap = '8px';
+          menu.style.zIndex = '1000';
+          menu.style.animation = 'fadeInUp 0.3s ease-out';
+        } else {
+          menu.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
