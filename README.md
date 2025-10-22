@@ -1,12 +1,12 @@
-# RA Tech Sol - IT Infrastructure & Technology Services
+# RA Techsol - IT Infrastructure & Technology Services
 
-Professional website for RA Tech Sol, specializing in IT infrastructure and technology services for businesses.
+Professional website for RA Techsol, specializing in IT infrastructure and technology services for businesses.
 
 ## 🌐 Live Website
 
-Visit our website: [Website](https://h3x0r-official.github.io/ratechsol/)
+Visit our website: [https://your-username.github.io/ra-tech-sol-website](https://your-username.github.io/ra-tech-sol-website)
 
-## 🏢 About RA Tech Sol
+## 🏢 About RA Techsol
 
 We specialize in designing, implementing, and managing robust IT infrastructure that businesses need to thrive in a digital-first world. From secure networking and systems administration to responsive IT support, our mission is to provide reliable, efficient, and scalable technology services.
 
@@ -58,9 +58,8 @@ This website is hosted on GitHub Pages. For deployment instructions, see [DEPLOY
 
 ## 📝 License
 
-© 2025 RA Tech Sol. All rights reserved.
+© 2025 RA Techsol. All rights reserved.
 
 ---
 
-**RA Tech Sol** - Your dedicated technology partner for IT infrastructure solutions.
-
+**RA Techsol** - Your dedicated technology partner for IT infrastructure solutions.
