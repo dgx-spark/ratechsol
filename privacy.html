@@ -31,6 +31,24 @@
       --radius-xs:8px;
       --max:1200px;
     }
+
+    /* Bright mode variables */
+    [data-theme="bright"] {
+      --brand: #6366f1;
+      --brand-2: #8b5cf6;
+      --brand-3: #a855f7;
+      --bg: #f8fafc;
+      --bg-elev: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --card: #ffffff;
+      --stroke: #e2e8f0;
+      --ok: #059669;
+      --warn: #d97706;
+      --error: #dc2626;
+      --shadow: 0 20px 40px rgba(99, 102, 241, .1), 0 8px 20px rgba(0,0,0,.05);
+      --shadow-lg: 0 25px 50px rgba(99, 102, 241, .15), 0 12px 30px rgba(0,0,0,.08);
+    }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     html,body{height:100%}
@@ -38,7 +56,8 @@
       margin:0;
       font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
       color:var(--text);
-      background:#000;
+      background:var(--bg);
+      transition: background-color .3s ease, color .3s ease;
       letter-spacing:.3px;
       line-height:1.6;
       -webkit-font-smoothing:antialiased;
@@ -51,6 +70,12 @@
       background:rgba(10,10,15,.8);
       backdrop-filter: blur(10px);
       border-bottom:1px solid var(--stroke);
+    }
+    
+    /* Light mode header overrides */
+    [data-theme="bright"] header{
+      background: rgba(248,250,252,.8);
+      border-bottom: 1px solid var(--stroke);
     }
     .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; height:72px}
     .brand{display:flex; align-items:center; gap:12px}
@@ -110,9 +135,109 @@
     .whatsapp-btn:hover{transform: scale(1.06)}
     .whatsapp-btn svg{width:32px; height:32px}
     
+    /* Scroll Buttons */
+    .scroll-btn{
+      position:fixed; z-index:100; width:50px; height:50px; border-radius:50%;
+      background:linear-gradient(135deg, var(--brand), var(--brand-2)); border:none; color:white;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      box-shadow: var(--shadow); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity:0; visibility:hidden; transform: scale(0.8);
+    }
+    .scroll-btn.visible{opacity:1; visibility:visible; transform: scale(1)}
+    .scroll-btn:hover{transform: scale(1.1); box-shadow: var(--shadow-lg);}
+    .scroll-to-top{right:20px; bottom:20px;}
+    .scroll-to-bottom{right:20px; bottom:80px;}
+    .scroll-btn svg{width:20px; height:20px}
+
+    /* CTA and theme toggle styles */
+    .cta{display:flex; gap:10px; align-items:center}
+    .btn{
+      padding:12px 20px; border-radius:14px; cursor:pointer; font-weight:500; font-size:15px;
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      color:var(--text); border:1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(10px) saturate(140%);
+      -webkit-backdrop-filter: blur(10px) saturate(140%);
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .btn:hover{border-color:rgba(255,255,255,.24); background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));}
+
+    /* Theme toggle button */
+    .theme-toggle{
+      width:44px; height:44px; border-radius:12px; border:none; cursor:pointer;
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(10px) saturate(140%);
+      -webkit-backdrop-filter: blur(10px) saturate(140%);
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      transition: all .25s ease;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .theme-toggle:hover{
+      border-color: rgba(255,255,255,.24);
+      background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+      transform: scale(1.05);
+    }
+    .theme-toggle svg{
+      width: 20px; height: 20px; color: var(--text);
+      transition: all .3s ease;
+      position: absolute;
+    }
+    .theme-toggle .sun-icon{
+      opacity: 1; transform: rotate(0deg);
+    }
+    .theme-toggle .moon-icon{
+      opacity: 0; transform: rotate(180deg);
+    }
+    [data-theme="bright"] .theme-toggle .sun-icon{
+      opacity: 0; transform: rotate(180deg);
+    }
+    [data-theme="bright"] .theme-toggle .moon-icon{
+      opacity: 1; transform: rotate(0deg);
+    }
+    
+    /* Light mode button overrides */
+    [data-theme="bright"] .btn{
+      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.02));
+      color: var(--text);
+      border: 1px solid rgba(0,0,0,.12);
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    [data-theme="bright"] .btn:hover{
+      border-color: rgba(0,0,0,.2);
+      background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.04));
+    }
+    [data-theme="bright"] .btn.primary{
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      border-color: var(--brand);
+      color: white;
+      box-shadow: 0 8px 20px rgba(99, 102, 241, .3);
+    }
+    [data-theme="bright"] .btn.primary:hover{
+      box-shadow: 0 12px 28px rgba(99, 102, 241, .4);
+    }
+    [data-theme="bright"] .btn.ghost{
+      background: linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.01));
+      border: 1px solid rgba(0,0,0,.1);
+      color: var(--text);
+    }
+    [data-theme="bright"] .theme-toggle{
+      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.02));
+      border: 1px solid rgba(0,0,0,.12);
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    }
+    [data-theme="bright"] .theme-toggle:hover{
+      border-color: rgba(0,0,0,.2);
+      background: linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.04));
+    }
+    [data-theme="bright"] .theme-toggle svg{
+      color: var(--text);
+    }
+    
     /* Responsive */
     @media (max-width: 768px){
-      .content{padding:48px 0 24px}
+      .content{padding:48px 20px 24px}
       .content h1{font-size:28px}
       .content h2{font-size:20px}
       .content h3{font-size:18px}
@@ -121,12 +246,27 @@
       .footer .row{flex-direction:column; gap:16px; text-align:center}
       .social{justify-content:center}
     }
+    
+    @media (max-width: 480px){
+      .content{padding:40px 16px 20px}
+      .container{padding:0 16px}
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav" aria-label="Subpage Header">
-      <a class="btn" href="index.html" aria-label="Go to Home">Home</a>
+      <div class="cta">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"/>
+          </svg>
+        </button>
+        <a class="btn" href="index.html" aria-label="Go to Home">Home</a>
+      </div>
     </div>
   </header>
 
@@ -241,7 +381,7 @@
       <div class="social" aria-label="Social links">
         <a href="https://www.linkedin.com/company/ra-techsol" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
         <a href="#" aria-label="Twitter / X">X</a>
-        <a href="#" aria-label="GitHub">GH</a>
+        <a href="https://maps.app.goo.gl/NGYXnHDZ6Np2TAV19" aria-label="Google Maps Location" target="_blank" rel="noopener">📍</a>
       </div>
       <div class="small">
         <a href="terms.html" style="color:var(--muted)">Terms</a> · 
@@ -251,6 +391,19 @@
     </div>
   </footer>
 
+  <!-- Scroll Buttons -->
+  <button class="scroll-btn scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+  
+  <button class="scroll-btn scroll-to-bottom" id="scrollToBottom" aria-label="Scroll to bottom">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 9l6 6 6-6"/>
+    </svg>
+  </button>
+  
   <!-- WhatsApp Button -->
   <a href="https://wa.me/923136265742" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor">
@@ -290,6 +443,172 @@
         }
       });
     }
+
+    // Scroll buttons functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    const scrollToBottomBtn = document.getElementById('scrollToBottom');
+    
+    // Show/hide scroll buttons based on scroll position
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // Show scroll to top button when scrolled down
+      if (scrollTop > 300) {
+        scrollToTopBtn.classList.add('visible');
+      } else {
+        scrollToTopBtn.classList.remove('visible');
+      }
+      
+      // Show scroll to bottom button when not at bottom
+      if (scrollTop < documentHeight - windowHeight - 100) {
+        scrollToBottomBtn.classList.add('visible');
+      } else {
+        scrollToBottomBtn.classList.remove('visible');
+      }
+    });
+    
+    // Scroll to top functionality
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Scroll to bottom functionality
+    scrollToBottomBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      });
+    });
+
+    // Security measures - Disable right-click, text selection, and image saving
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+
+    // Disable text selection
+    document.addEventListener('selectstart', function(e) {
+      e.preventDefault();
+      return false;
+    });
+
+    // Disable drag and drop
+    document.addEventListener('dragstart', function(e) {
+      e.preventDefault();
+      return false;
+    });
+
+    // Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S, Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+    document.addEventListener('keydown', function(e) {
+      // Disable F12 (Developer Tools)
+      if (e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+Shift+I (Developer Tools)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+U (View Source)
+      if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+S (Save Page)
+      if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+A (Select All)
+      if (e.ctrlKey && e.keyCode === 65) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+C (Copy)
+      if (e.ctrlKey && e.keyCode === 67) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+V (Paste)
+      if (e.ctrlKey && e.keyCode === 86) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+X (Cut)
+      if (e.ctrlKey && e.keyCode === 88) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Disable Ctrl+P (Print)
+      if (e.ctrlKey && e.keyCode === 80) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // Disable image saving
+    document.addEventListener('dragstart', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // Disable image context menu
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // Disable text selection via CSS
+    document.body.style.userSelect = 'none';
+    document.body.style.webkitUserSelect = 'none';
+    document.body.style.mozUserSelect = 'none';
+    document.body.style.msUserSelect = 'none';
+
+    // Disable image dragging
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      img.draggable = false;
+      img.ondragstart = function() { return false; };
+    });
+
+    // Console warning
+    console.clear();
+    console.log('%cSTOP!', 'color: red; font-size: 50px; font-weight: bold;');
+    console.log('%cThis is a browser feature intended for developers. If someone told you to copy-paste something here to enable a feature or "hack" someone\'s account, it is a scam and will give them access to your account.', 'color: red; font-size: 16px;');
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    // Load saved theme or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', savedTheme);
+    
+    themeToggle?.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'bright' : 'dark';
+      
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
   </script>
 </body>
 </html>
